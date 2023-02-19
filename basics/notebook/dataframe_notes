@@ -1,0 +1,186 @@
+['__class__'-
+'__delattr__'-
+'__dict__'-
+'__dir__'-
+'__doc__'-
+'__eq__'-
+'__format__'-
+'__ge__'-
+'__getattr__'-
+'__getattribute__'-
+'__getitem__'-
+'__gt__'-
+'__hash__'-
+'__init__'-
+'__init_subclass__'-
+'__le__'-
+'__lt__'-
+'__module__'-
+'__ne__'-
+'__new__'-
+'__reduce__'-
+'__reduce_ex__'-
+'__repr__'-
+'__setattr__'-
+'__sizeof__'-
+'__str__'-
+'__subclasshook__'-
+'__weakref__'-
+'_collect_as_arrow'-
+'_jcols'-
+'_jdf'-
+'_jmap'-
+'_jseq'-
+'_lazy_rdd'-
+'_repr_html_'-
+'_sc'-
+'_schema'-
+'_sort_cols'-
+'_support_repr_html'-
+'_to_corrected_pandas_type'-
+'agg'-
+'alias'-
+'approxQuantile'-
+'cache'-
+'checkpoint'-
+'coalesce'-
+'colRegex'- df.select(df.colRegex("`(Col1)?+.+`")).show() # backquote "`" is very important to implement this func
+'collect'- Returns all the records as a list of :class:`Row` (Row is a Pyspark.sql.types)
+'columns'- Return List of dataframe column names
+'corr'- Calculates the correlation of two columns of a :class:`DataFrame` as a double value.
+'count'- Returns Int of no. of rows in dataframe
+'cov'- Calculate the sample covariance for the given columns, specified by their names, as a double value.
+-- pyspark.sql.utils.AnalysisException: org.apache.hadoop.hive.ql.metadata.HiveException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient;
+'createGlobalTempView'- creates temp view which can be accessed within a application.
+'createOrReplaceGlobalTempView'- The lifetime of this temporary view is tied to this Spark application
+'createOrReplaceTempView'- The lifetime of this temporary table is tied to the :class:`SparkSession`
+'createTempView'-
+'crossJoin'-  df.crossJoin(df2.select("height")).select("age", "name", "height").collect()
+'crosstab'- It accepts 2 params and outputs the +----------+---+---+---+
+|sl_no_name|aaa|bbb|ccc|
++----------+---+---+---+
+|         2|  0|  1|  0|
+|         1|  1|  0|  0|
+|         3|  0|  0|  1|
++----------+---+---+---+
+for Input:
++-----+----+
+|sl_no|name|
++-----+----+
+|    1| aaa|
+|    2| bbb|
+|    3| ccc|
++-----+----+
+
+'cube'-
++-----+----+
+|sl_no|name|
++-----+----+
+|    1| aaa|
+|    2| bbb|
+|    3| ccc|
++-----+----+
+Output :
++-----+----+-----+
+|sl_no|name|count|
++-----+----+-----+
+| null|null|    3|
+| null| aaa|    1|
+| null| bbb|    1|
+| null| ccc|    1|
+|    1|null|    1|
+|    1| aaa|    1|
+|    2|null|    1|
+|    2| bbb|    1|
+|    3|null|    1|
+|    3| ccc|    1|
++-----+----+-----+
+
+'describe'- Computes basic statistics for numeric and string columns.count, mean, stddev, min, and max
+'distinct'- distinct rows
+'drop'- drop a column or list of columns
+'dropDuplicates'- drop duplicates based on list of columns or columns or with all columns
+'drop_duplicates'-
+df_n = spark.createDataFrame([(1,None,None), (2,"aa", None), (3, "bb", "bbbb"), (None, None, None), (4, None, "cccc")])
+'dropna'- dropna(how='any', thresh=None, subset=None)
+'dtypes'- list of schema -[('sl_no', 'bigint'), ('name', 'string')]
+df.schema - StructType(List(StructField(sl_no,LongType,true),StructField(name,StringType,true)))
+df.printSchema() - root
+ |-- sl_no: long (nullable = true)
+ |-- name: string (nullable = true)
+'exceptAll'- This is like A-B -df2.exceptAll(df1), if more of same values occurs will eliminate only how much times it occurs in B.
+'explain'-
+df.explain(extended=False, mode="")
+ * ``simple``: Print only a physical plan.
+        * ``extended``: Print both logical and physical plans.
+        * ``codegen``: Print a physical plan and generated codes if they are available.
+        * ``cost``: Print a logical plan and statistics if they are available.
+        * ``formatted``: Split explain output into two sections: a physical plan outline                 and node details.
+'fillna'- df4.na.fill({'age': 50, 'name': 'unknown'}).show()
+'filter'- df.filter("sl_no >= 2 or name=='ccc'").show(), df.filter(f.col("sl_no")>=2).show()
+'first'- returns a first row of dataframe - Row(age=2, name='Alice')
+'foreach'-
+def f(val):
+...     print(val.sl_no)
+...     print(type(val))
+df.foreach(f)
+'foreachPartition'- It is same as foreach but here in each partitions the functions will Run
+def f(val):
+        for v in val:
+  ...     print(v.sl_no)
+  ...     print(type(v))
+'freqItems'-
+'groupBy'- df.groupBy('name').agg({'age': 'mean'}).collect()
+'groupby'-
+'head'- similar to take method but it brings all data to driver and then filters
+'hint'- df.join(df2.hint("broadcast"), "name").show() # hint(name, *parameters)
+'intersect'- Will populate common records. Intersect can only be performed on tables with the same number of columns
+'intersectAll'- Will populate common records with duplicates
+'isLocal'- isLocal() - Returns ``True`` if the :func:`collect` and :func:`take` methods can be run locally
+'isStreaming'- df.isStreaming
+'is_cached'- df.is_cached - to check whether DF is cached or not
+'join'-
+'limit'- df.limit(1).collect()
+'localCheckpoint'-
+'mapInPandas'-
+'na'-
+'orderBy'-
+'persist'-
+'printSchema'-
+'randomSplit'-
+'rdd'-
+'registerTempTable'-
+'repartition'-
+'repartitionByRange'-
+'replace'-
+'rollup'-
+'sample'-
+'sampleBy'-
+'schema'-
+'select'-
+'selectExpr'-
+'show'- show(n=20, truncate=True, vertical=False)
+'sort'-
+'sortWithinPartitions'-
+'sql_ctx'-
+'stat'-
+'storageLevel'- StorageLevel(False, False, False, False, 1) means StorageLevel(useDisk, useMemory, useOffHeap, deserialized, replication=1)
+'subtract'-
+'summary'-
+'tail'-
+'take'-
+'toDF'-
+'toJSON'-
+'toLocalIterator'-
+'toPandas'-
+'transform'-
+'union'-
+'unionAll'-
+'unionByName'-
+'unpersist'-
+'where'-
+'withColumn'-
+'withColumnRenamed'-
+'withWatermark'-
+'write'-
+'writeStream']

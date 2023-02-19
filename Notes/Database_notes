@@ -1,0 +1,82 @@
+Data Modelling:
+
+- Conceptual design - ER Diagram
+- Physical Design - Implementing Datbases using tables, indexes and constraints
+
+Data Integrity - Making sure data is not corrupted and it is accurate and consistent.
+
+Tables Types:
+Junction table - Contains only primary key of multiple tables.
+
+Fact Tables:
+Fact tables in a data warehouse can come in different forms, based on the specific needs of the system and the types of data being stored. Some common types of fact tables include:
+
+Transaction Fact Tables: Transaction fact tables store data about specific transactions or events that have taken place, such as sales transactions, customer orders, or financial transactions.
+
+Accumulating Fact Tables: Accumulating fact tables store data about events or transactions that accumulate over time, such as the running total of sales for a particular product or the total number of customer orders received.
+
+Snapshot Fact Tables: Snapshot fact tables store data at a specific point in time, providing a snapshot of the data at that moment. They are often used to store data about inventory levels, balances, or other values that change over time.
+
+Historical Fact Tables: Historical fact tables store data about events or transactions that have taken place in the past, providing a historical view of the data. They are used to track changes in data over time and to support data analysis and reporting.
+
+Event Fact Tables: Event fact tables store data about specific events, such as customer visits to a website, service requests, or equipment failures. They provide a way to track the occurrence of specific events and to analyze the data associated with those events.
+
+Each of these types of fact tables has a specific purpose and is used in different ways to support the data warehousing and business intelligence needs of a system. Understanding the different types of fact tables and their uses can help you choose the best fact table structure for your specific needs.
+
+Additive, Semi-additive and non-additive measures might be there in FACT Tables.
+
+Dimensional Tables will have less data and it will be less frequently changed.
+eg., Time dim table, Location dim table, etc.
+
+Surrogate Key - Its mainly used in Dimensional tables, allows keys values to change over time, it is an unique identifier/primary key but doesn't represent any actual data.
+In fact tables, surrogate keys can also be used to provide a unique identifier for each fact record. This can be useful in situations where the combination of the dimension keys does not provide a unique identifier for each fact record, such as when multiple fact records are related to a single dimension member.
+
+Different Keys:
+Primary Key: A primary key is a unique identifier for each record in a table. It is used to enforce the uniqueness of data in a table and to define relationships between tables through foreign keys. A primary key can be a single column or a combination of columns.
+
+Foreign Key: A foreign key is a column or set of columns in one table that refers to the primary key of another table. Foreign keys are used to enforce referential integrity between tables and to define relationships between data in different tables.
+
+Candidate Key: A candidate key is a set of columns that could be used as a primary key for a table. A table may have multiple candidate keys, but only one of them can be selected as the primary key.
+
+Composite Key: A composite key is a combination of two or more columns that together form a unique identifier for each record in a table. Composite keys are used when a single column is not sufficient to provide a unique identifier for each record.
+
+Alternate Key: An alternate key is a unique identifier for a record in a table that is not the primary key. Alternate keys can be used as a backup in case the primary key is not available or to enforce unique constraints on specific columns.
+
+Natural Key: A natural key is a unique identifier for a record in a table that is derived from the data stored in the record. For example, a natural key for a customer table might be the customer's social security number.
+
+How data is stored in Databases internally:
+
+- Internally data is stored in binary format
+- Concurrency control - multiversion concurrency control (MVCC) mechanism to manage concurrent access to the data in a table.
+- Storage structures - B-trees, Hash tables and Clustered Indexes
+- The storage manager uses various storage structures, such as B-trees, hash tables, and clustered indexes, to locate and retrieve the data efficiently.
+  Query Execution:
+  parsing - Syntax check and parse it to Abstract Syntax Tree (AST)
+  optimization - generates Query plan
+  execution - The query plan is executed, which involves reading the data from disk, applying filters, and aggregating the data as needed.
+  return results
+
+Indexes:
+B-tree - Balanced Tree is very well suited for Insertion, deletion and Updation and for all data types.
+Hash Index - Its suitable for finding specific values and its not suitable for range queries, as the hash values doesn't maintain the sorted order.
+Bitmap Index - Its suitable for Multiple columns filter as it will combine the conditions and create a single bitmap for it. Its suitable for low cardinality fields.
+Spatial Index - Spatial indexes are used for efficient querying of geographic data, such as points, lines, and polyggon shapes
+Text Index: Text indexes are used for efficient querying of text data. They can be used for full-text search and other text-based queries.
+Clustered Index: Clustered indexes are used to physically order the data in a table according to the values in the index. They can improve the performance of range and sorting operations.
+
+RAID (Redundant Array of Inexpensive Disks) is a technology used in computer systems to provide data protection and increase storage capacity.
+
+RAID 0: Data is striped across multiple disks, providing improved performance but no data protection. If one disk fails, all data is lost.
+
+RAID 1: Data is mirrored across multiple disks, providing complete data protection but no performance improvement.
+
+RAID 5: Data is striped across multiple disks with parity information stored on one disk, providing data protection in the case of a single disk failure.
+
+RAID 6: Data is striped across multiple disks with two sets of parity information stored on separate disks, providing data protection in the case of up to two disk failures.
+
+RAID 10: Data is striped across multiple disks and mirrored, providing complete data protection and improved performance.
+
+Data sharding vs Data Partitioning:
+-Data Partioning, data is divided into multiple partitions and distributed across nodes in Distributed systems.
+
+- Data Sharding, database itself divided into multiple small database also called shards with each shards will have its own schema, index. It helps performance but complexity in query execution.

@@ -1,0 +1,106 @@
+Special features in Yaml:
+
+YAML data:
+Imaro:
+   author: Charles R. Saunders
+   language: English
+   publication-year: 1981
+   pages: 224
+
+JSON Data:
+{
+  "Imaro": {
+    "author": "Charles R. Saunders",
+    "language": "English",
+     "publication-year": "1981",
+     "pages": 224,
+  }
+}
+
+Implicit and Explicit types:
+# The value should be an int:
+is-an-int: !!int 14.10
+# Turn any value to a string:
+is-a-str: !!str 67.43
+# The next value should be a boolean:
+is-a-bool: !!bool true
+
+String : To print the string values in paragraph or in newlines (| or > can be used)
+data: |
+   These
+   Newlines
+data: >
+   This text is
+   wrapped and is a
+
+Sequence:
+
+shopping: 
+- milk
+- eggs
+- juice
+
+json equivalent - {shopping: ['milk', 'eggs', 'juice']}
+
+NULL values:
+man: ~
+van: null
+
+same:
+man: None
+van: None
+
+Dictionary:
+---
+foo: { thing1: huey, thing2: louie, thing3: dewey }
+
+same as above:
+---
+foo:
+  thing1: huey
+  thing2: louie
+  thing3: dewey
+
+
+
+Anchors (&) & aliases (*) and override (<<) & extensions.
+Example:
+definitions: 
+  steps:
+    - step: &build-test # Anchors
+        name: Build and test
+        script:
+          - mvn package
+        artifacts:
+          - target/**
+pipelines:
+  branches:
+    develop:
+      - step: *build-test # Aliases 
+    master:
+      - step: 
+          <<: *build-test
+          name: Testing on Master #override
+          ongoing: false #extension
+
+The above Pipelines can be written as follows:
+definitions: # will stay as above
+
+pipelines:
+  branches:
+    develop:
+      - step: 
+          name: Build and test
+          script:
+            - mvn package
+          artifacts:
+            - target/**
+    master:
+      - step: 
+          #<<: *build-test
+          name: Testing on Master #override #name: Testing on Master #override
+          script:  
+            - mvn package
+            artifacts:
+              - target/**
+            ongoing: false #extension 

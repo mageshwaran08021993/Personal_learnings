@@ -1,0 +1,33 @@
+import sys
+import math
+from contextlib import redirect_stdout
+
+
+def compute_final_position(width, height, position, portal_a, portal_b, moves):
+    # Write your code here
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    c_h = position[1]
+    c_w = position[0]
+    for h in range(0, height):
+        for w in range(0, width):
+
+
+
+# Ignore and do not change the code below
+def main():
+    # pylint: disable = C, W
+    width = int(input())
+    height = int(input())
+    moves = input()
+    position = [int(i) for i in input().split()]
+    portal_a = [int(i) for i in input().split()]
+    portal_b = [int(i) for i in input().split()]
+    with redirect_stdout(sys.stderr):
+        final_position = compute_final_position(width, height, position, portal_a, portal_b, moves)
+    for i in range(2):
+        print(final_position[i])
+
+
+if __name__ == "__main__":
+    main()
+# Ignore and do not change the code above

@@ -1,0 +1,2 @@
+Spark Streaming supports various types of windows, such as sliding windows, tumbling windows, and session windows, and it's important to understand the differences between them.
+Stateful Processing - Spark Streaming supports stateful processing, where the state of a processing operation is maintained across multiple batches. This is useful for maintaining application state, such as tracking the number of events received in a time window.
