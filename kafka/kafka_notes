@@ -46,3 +46,5 @@ Consumers: Consumers are client applications that subscribe to one or more topic
 Consumer Groups: Consumers can belong to a consumer group, which allows for parallel processing of messages from a topic. Each partition within a topic is assigned to a single consumer in a consumer group, and each consumer is responsible for processing the messages in its assigned partition.
 
 In summary, the Apache Kafka architecture is a distributed system that consists of producers, topics, partitions, brokers, Zookeeper, consumers, and consumer groups. These components work together to provide a highly scalable, fault-tolerant, and high-performance messaging platform.
+
+
