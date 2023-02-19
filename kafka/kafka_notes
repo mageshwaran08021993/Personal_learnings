@@ -1,21 +1,23 @@
 Installations Requirement:
-  - Java JDK
-  - Kafka
+
+- Java JDK
+- Kafka
 
 Startup:
 cd D:\kafka\kafka_src
-  - start zookeeper - zookeeper-server-start.bat config\zookeeper.properties (bin\windows\zookeeper-server-start.bat config\zookeeper.properties)
-  - start Kafka - kafka-server-start.bat config\server.properties (.\bin\windows\kafka-server-start.bat .\config\server.properties)
-  - Create topics - kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic <topic-name> (.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test1)
-  - start producer - kafka-console-producer.bat --bootstrap-server localhost:9092 --topic <topic-name> (.\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic test1)
-  - start consumer - kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <topic-name> --from-beginning (.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test1 --from-beginning)
 
+- start zookeeper - zookeeper-server-start.bat config\zookeeper.properties (bin\windows\zookeeper-server-start.bat config\zookeeper.properties)
+- start Kafka - kafka-server-start.bat config\server.properties (.\bin\windows\kafka-server-start.bat .\config\server.properties)
+- Create topics - kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic <topic-name> (.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test1)
+- start producer - kafka-console-producer.bat --bootstrap-server localhost:9092 --topic <topic-name> (.\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic test1)
+- start consumer - kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <topic-name> --from-beginning (.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test1 --from-beginning)
 
 To Check the partitions
-- D:\kafka\kafka_src\bin\windows\kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic test1
-brokers check - D:\kafka\kafka_src\bin\windows\kafka-broker-api-versions.bat --bootstrap-server localhost:9092
 
-zookeeper/bin/zkCli.sh -server localhost:9092 
+- D:\kafka\kafka_src\bin\windows\kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic test1
+  brokers check - D:\kafka\kafka_src\bin\windows\kafka-broker-api-versions.bat --bootstrap-server localhost:9092
+
+zookeeper/bin/zkCli.sh -server localhost:9092
 
 Topics:
 to list topics - kafka-topics --zookeeper zookeeper:2181 --list
@@ -47,4 +49,4 @@ Consumer Groups: Consumers can belong to a consumer group, which allows for para
 
 In summary, the Apache Kafka architecture is a distributed system that consists of producers, topics, partitions, brokers, Zookeeper, consumers, and consumer groups. These components work together to provide a highly scalable, fault-tolerant, and high-performance messaging platform.
 
-
+dff
